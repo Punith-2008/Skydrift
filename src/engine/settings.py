@@ -31,6 +31,7 @@ class Settings:
     show_fps: bool = False
 
     # Gameplay
+    starting_biome: str = "ocean"
     difficulty: str = "normal"   # easy | normal | hard
     player_name: str = "Player"
 

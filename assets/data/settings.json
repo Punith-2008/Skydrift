@@ -8,11 +8,12 @@
   "fps_limit": 60,
   "fullscreen": false,
   "show_fps": false,
+  "starting_biome": "jungle",
   "difficulty": "normal",
   "player_name": "Player",
   "high_score": 27,
-  "total_coins": 97,
-  "unlocked_skins": [
+  "total_coins": 100,
+  "unlocked_skins": [ 
     "classic",
     "cyber",
     "lava",

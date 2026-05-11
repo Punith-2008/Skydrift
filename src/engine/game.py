@@ -132,9 +132,11 @@ class Game:
         self.settings.save()
 
         # Start menu music
+        sb = getattr(self.settings, 'starting_biome', 'ocean')
         vol = self.settings.volume_master if getattr(self.settings, 'sound_enabled', True) else 0.0
         self.audio.set_volumes(vol, self.settings.volume_music, self.settings.volume_sfx)
-        self.audio.play_biome_music("ocean")
+        self.audio.play_biome_music(sb)
+        self.menu.btn_biome.text = f"BIOME: {sb.upper().replace('_', ' ')}"
 
     # ── Display init ──────────────────────────────────────────────────────────
     def _init_display(self):
@@ -165,8 +167,15 @@ class Game:
     # ── Game reset ────────────────────────────────────────────────────────────
     def _start_game(self):
         W, H = self.settings.width, self.settings.height
+        
+        sb = getattr(self.settings, 'starting_biome', 'ocean')
         self._biome_idx = 0
-        biome = self._biomes[0]
+        for i, b in enumerate(self._biomes):
+            if b.NAME == sb:
+                self._biome_idx = i
+                break
+                
+        biome = self._biomes[self._biome_idx]
 
         # Reset all entities
         self.bird = Bird(W * 0.25, H * 0.5, self.settings.active_skin)
@@ -231,6 +240,19 @@ class Game:
             if action == "play":
                 self.audio.play("click")
                 self._start_game()
+            elif action in ("cycle_biome_next", "cycle_biome_prev"):
+                self.audio.play("click")
+                b_list = ["ocean", "volcano", "ice_world", "deep_space", "jungle", "desert", "neon_digital"]
+                current = getattr(self.settings, 'starting_biome', 'ocean')
+                idx = b_list.index(current) if current in b_list else 0
+                if action == "cycle_biome_next":
+                    next_biome = b_list[(idx + 1) % len(b_list)]
+                else:
+                    next_biome = b_list[(idx - 1) % len(b_list)]
+                self.settings.starting_biome = next_biome
+                self.settings.save()
+                self.menu.btn_biome.text = f"BIOME: {next_biome.upper().replace('_', ' ')}"
+                self.audio.play_biome_music(next_biome)
             elif action == "quit":
                 self.audio.play("click")
                 # Instead of just breaking, we can post a QUIT event
@@ -268,7 +290,7 @@ class Game:
             elif action == "menu":
                 self.audio.play("click")
                 self.state = GameState.MENU
-                self.audio.play_biome_music("ocean")
+                self.audio.play_biome_music(getattr(self.settings, 'starting_biome', 'ocean'))
 
         elif s == GameState.GAME_OVER:
             action = self.game_over.handle_event(event)
@@ -278,7 +300,7 @@ class Game:
             elif action == "menu":
                 self.audio.play("click")
                 self.state = GameState.MENU
-                self.audio.play_biome_music("ocean")
+                self.audio.play_biome_music(getattr(self.settings, 'starting_biome', 'ocean'))
 
         elif s == GameState.SETTINGS:
             action = self.settings_ui.handle_event(event, self.settings)

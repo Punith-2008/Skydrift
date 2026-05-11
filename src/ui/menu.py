@@ -26,18 +26,21 @@ class MainMenu:
         # Buttons
         bw, bh = 260, 56
         cx = screen_w // 2
-        start_y = screen_h // 2 - 20
+        start_y = screen_h // 2 - 40
         spacing = 75
-        self.btn_play     = GlassButton(pygame.Rect(cx-bw//2, start_y,          bw, bh), "PLAY",            accent=(0,220,120),   icon="▶")
-        self.btn_quit     = GlassButton(pygame.Rect(cx-bw//2, start_y+spacing,  bw, bh), "QUIT",            accent=(255,100,100), icon="✕")
+        self.btn_play       = GlassButton(pygame.Rect(cx-bw//2, start_y,          bw, bh), "PLAY",            accent=(0,220,120),   icon="▶")
+        self.btn_biome_prev = GlassButton(pygame.Rect(cx-bw//2 - 50, start_y+spacing, 40, bh), "<",             accent=(0,200,255))
+        self.btn_biome      = GlassButton(pygame.Rect(cx-bw//2, start_y+spacing,  bw, bh), "BIOME: OCEAN",    accent=(0,200,255),   icon="🌍")
+        self.btn_biome_next = GlassButton(pygame.Rect(cx+bw//2 + 10, start_y+spacing, 40, bh), ">",             accent=(0,200,255))
+        self.btn_quit     = GlassButton(pygame.Rect(cx-bw//2, start_y+spacing*2,bw, bh), "QUIT",            accent=(255,100,100), icon="✕")
 
         # Corner secondary buttons
         self.btn_skins    = GlassButton(pygame.Rect(20,              screen_h-65, 120, 45), "SKINS",    accent=(255,180,0),   icon="🎨")
         self.btn_settings = GlassButton(pygame.Rect(screen_w-140,   screen_h-65, 120, 45), "SETTINGS", accent=(200,100,255), icon="⚙")
 
         # Ordered list used for focus cycling (Tab / arrow keys)
-        self._buttons     = [self.btn_play, self.btn_quit,
-                             self.btn_skins, self.btn_settings]
+        self._buttons     = [self.btn_play, self.btn_biome_prev, self.btn_biome, self.btn_biome_next,
+                             self.btn_quit, self.btn_skins, self.btn_settings]
         self._focus_idx   = 0
         self._buttons[self._focus_idx].focused = True
 
@@ -72,8 +75,11 @@ class MainMenu:
                 self._shift_focus(-1)
 
         # Let each button handle the event (mouse + Enter/Space via focused flag)
-        if self.btn_play.handle_event(event):     return "play"
-        if self.btn_quit.handle_event(event):     return "quit"
+        if self.btn_play.handle_event(event):       return "play"
+        if self.btn_biome_prev.handle_event(event): return "cycle_biome_prev"
+        if self.btn_biome_next.handle_event(event): return "cycle_biome_next"
+        if self.btn_biome.handle_event(event):      return "cycle_biome_next"
+        if self.btn_quit.handle_event(event):       return "quit"
         if self.btn_skins.handle_event(event):    return "skins"
         if self.btn_settings.handle_event(event): return "settings"
         return ""
