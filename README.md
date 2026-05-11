@@ -1,6 +1,6 @@
 # SkyDrift 🎮
 
-A production-quality **Flappy Bird inspired game** built with Python 3 + Pygame, featuring modern visuals, 8 procedurally-rendered biomes, particle effects, power-ups, achievements, and persistent leaderboards.
+A production-quality **Flappy Bird inspired game** built with Python 3 + Pygame, featuring modern visuals, 7 procedurally-rendered biomes, particle effects, power-ups, achievements, and persistent leaderboards.
 
 ---
 
@@ -8,7 +8,7 @@ A production-quality **Flappy Bird inspired game** built with Python 3 + Pygame,
 
 | Feature | Details |
 |---------|---------|
-| **8 Biomes** | Cyberpunk City, Lava Volcano, Ice World, Deep Space, Jungle Ruins, Ocean Depths, Desert Storm, Neon Digital |
+| **7 Biomes** | Lava Volcano, Ice World, Deep Space, Jungle Ruins, Ocean Depths, Desert Storm, Neon Digital |
 | **Procedural Graphics** | All art drawn via `pygame.draw` — no external assets needed |
 | **Procedural Audio** | All sounds synthesized via `numpy` at startup |
 | **Particle System** | Trail, explosion, rain, snow, lava sparks, bubbles, neon glow |
@@ -17,7 +17,7 @@ A production-quality **Flappy Bird inspired game** built with Python 3 + Pygame,
 | **Achievements** | 12 achievements with persistent tracking |
 | **Leaderboard** | Top-10 JSON leaderboard with player name + date |
 | **Daily Challenge** | Seed-based daily objectives |
-| **Skin System** | 6 bird skins (unlock by score milestones) |
+| **Skin System** | 6 bird skins (all available by default) |
 | **Weather Effects** | Rain + lightning, snow, sandstorm, fog layers |
 | **Transitions** | Fade, chromatic aberration, pixel dissolve |
 | **Camera Shake** | On death and biome change |
@@ -79,29 +79,28 @@ SkyDrift/
 
 ## Biome Progression
 
-A new biome activates every **15 pipes** passed. The sequence cycles through all 8 biomes:
+A new biome activates every **15 pipes** passed. The sequence cycles through all 7 biomes:
 
-1. 🌆 Cyberpunk City → rain, neon buildings
-2. 🌋 Lava Volcano → lava rivers, ash fog
-3. ❄️ Ice World → aurora borealis, snow
-4. 🌌 Deep Space → nebulas, planets
-5. 🌿 Jungle Ruins → temples, vines, fireflies
-6. 🌊 Ocean Depths → coral, fish schools, caustics
-7. 🏜️ Desert Storm → pyramids, sandstorm, mirages
-8. 💻 Neon Digital → data streams, hexagons, glowing grid
+1. 🌋 Lava Volcano → lava rivers, ash fog
+2. ❄️ Ice World → aurora borealis, snow
+3. 🌌 Deep Space → nebulas, planets
+4. 🌿 Jungle Ruins → temples, vines, fireflies
+5. 🌊 Ocean Depths → coral, fish schools, caustics
+6. 🏜️ Desert Storm → pyramids, sandstorm, mirages
+7. 💻 Neon Digital → data streams, hexagons, glowing grid
 
 ---
 
-## Skin Unlocks
+## Skins
 
-| Skin | Requirement |
-|---|---|
-| Classic | Always available |
-| Cyber | Score 50 |
-| Lava | Score 100 |
-| Neon | Score 200 |
-| Ghost | Score 300 |
-| Cosmic | Score 500 |
+All 6 skins are unlocked and available by default from the settings menu:
+
+- **Classic**
+- **Cyber**
+- **Lava**
+- **Neon**
+- **Ghost**
+- **Cosmic**
 
 ---
 
