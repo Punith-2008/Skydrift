@@ -1,0 +1,21 @@
+{
+  "unlocked": [
+    "combo_x3",
+    "score_25",
+    "first_flight",
+    "no_powerup_25",
+    "powerup_shield",
+    "coins_200",
+    "score_10",
+    "coins_50"
+  ],
+  "stats": {
+    "games": 12,
+    "best_score": 26,
+    "total_coins": 216,
+    "max_combo_mult": 3,
+    "no_powerup_best": 2601,
+    "best_no_powerup": 4,
+    "shields_used": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "volume_master": 1.0,
+  "volume_music": 0.49615384615384617,
+  "volume_sfx": 0.8,
+  "sound_enabled": true,
+  "width": 1280,
+  "height": 720,
+  "fps_limit": 60,
+  "fullscreen": false,
+  "show_fps": false,
+  "difficulty": "normal",
+  "player_name": "Player",
+  "high_score": 27,
+  "total_coins": 97,
+  "unlocked_skins": [
+    "classic",
+    "cyber",
+    "lava",
+    "ghost",
+    "neon",
+    "cosmic"
+  ],
+  "active_skin": "lava",
+  "particles_enabled": false,
+  "weather_enabled": true,
+  "screen_shake_enabled": true
+}
