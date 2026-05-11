@@ -29,7 +29,8 @@ A production-quality **Flappy Bird inspired game** built with Python 3 + Pygame,
 
 ```bash
 # 1. Clone / download the project
-cd "d:\Punith\Python CBP\SkyDrift"
+git clone https://github.com/Punith-2008/Skydrift.git
+cd Skydrift
 
 # 2. Install dependencies
 pip install pygame numpy
